@@ -338,22 +338,23 @@
             opacity: 1;
         }
         
-        /* Notificação de Compradores (menor) */
+        /* NOTIFICAÇÃO REVISADA - MOVIDA PARA OUTRO CANTO E COM Z-INDEX MAIS BAIXO */
         .notification-container {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            top: 20px; /* MUDADO: Agora fica no topo */
+            right: 20px; /* MUDADO: Continua na direita mas no topo */
             width: 260px;
-            z-index: 1000;
+            z-index: 900; /* REDUZIDO: z-index menor que o do WhatsApp (1000) */
             background: rgba(30, 30, 30, 0.95);
             border-radius: 8px;
             padding: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             border-left: 3px solid var(--success);
             backdrop-filter: blur(5px);
-            transition: transform 0.5s ease, opacity 0.5s ease;
+            transition: all 0.3s ease;
             opacity: 0.85;
             font-size: 0.9rem;
+            pointer-events: none; /* IMPORTANTE: não interfere com cliques */
         }
         
         .notification-container:hover {
@@ -500,12 +501,12 @@
         /* Botões Flutuantes com animação de aparecer/desaparecer */
         .floating-buttons {
             position: fixed;
-            bottom: 20px;
+            bottom: 90px; /* AUMENTADO: mais espaço para o botão do WhatsApp */
             left: 20px;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            z-index: 100;
+            z-index: 1000; /* AUMENTADO: maior que a notificação */
             opacity: 1;
             transition: opacity 0.5s ease;
         }
@@ -550,7 +551,7 @@
             box-shadow: 0 8px 20px rgba(138, 43, 226, 0.5);
         }
         
-        /* NOVO BOTÃO WHATSAPP FLUTUANTE */
+        /* BOTÃO WHATSAPP FLUTUANTE - PRIORIDADE MÁXIMA */
         .whatsapp-float-btn {
             position: fixed;
             bottom: 20px;
@@ -569,10 +570,11 @@
             transition: all 0.3s ease;
             animation: whatsappFloat 3s ease-in-out infinite;
             text-decoration: none;
-            z-index: 100;
+            z-index: 1000; /* PRIORIDADE MÁXIMA */
             opacity: 0;
             transform: scale(0.9);
             animation-delay: 2s;
+            pointer-events: auto; /* SEMPRE CLICÁVEL */
         }
         
         @keyframes whatsappFloat {
@@ -609,6 +611,7 @@
             transition: all 0.3s ease;
             pointer-events: none;
             backdrop-filter: blur(5px);
+            z-index: 1001; /* Acima do botão */
         }
         
         .whatsapp-tooltip::after {
@@ -664,12 +667,12 @@
             .notification-container {
                 width: 220px;
                 right: 10px;
-                bottom: 10px;
+                top: 10px;
                 padding: 10px;
             }
             
             .floating-buttons {
-                bottom: 10px;
+                bottom: 80px; /* Ajuste para mobile */
                 left: 10px;
             }
             
@@ -726,8 +729,10 @@
             }
             
             .notification-container {
-                width: 200px;
-                font-size: 0.85rem;
+                width: 180px; /* Menor no mobile */
+                font-size: 0.8rem;
+                top: 5px;
+                right: 5px;
             }
             
             .whatsapp-float-btn {
@@ -740,6 +745,13 @@
                 width: 160px;
                 font-size: 0.75rem;
                 padding: 10px 12px;
+            }
+        }
+        
+        /* Ajuste para telas muito pequenas */
+        @media (max-width: 350px) {
+            .notification-container {
+                display: none !important; /* Esconde notificação em telas muito pequenas */
             }
         }
     </style>
@@ -878,7 +890,7 @@
         </div>
     </footer>
     
-    <!-- Notificação de Compradores em Tempo Real -->
+    <!-- Notificação de Compradores em Tempo Real (AGORA NO TOPO DIREITO) -->
     <div class="notification-container" id="notification-container">
         <!-- Conteúdo será preenchido pelo JavaScript -->
     </div>
@@ -893,7 +905,7 @@
         </a>
     </div>
     
-    <!-- NOVO BOTÃO WHATSAPP FLUTUANTE -->
+    <!-- BOTÃO WHATSAPP FLUTUANTE - AGORA COM PRIORIDADE -->
     <a href="https://wa.link/0eu5ce" class="whatsapp-float-btn" id="whatsapp-float-btn" target="_blank" title="Comprar pelo WhatsApp">
         <i class="fab fa-whatsapp"></i>
         <div class="whatsapp-tooltip">
@@ -1242,7 +1254,7 @@
                     const translateNotice = document.createElement('div');
                     translateNotice.style.cssText = `
                         position: fixed;
-                        top: 20px;
+                        top: 60px; /* Abaixo da notificação */
                         right: 20px;
                         background: rgba(0, 0, 0, 0.8);
                         color: white;
@@ -1250,7 +1262,7 @@
                         border-radius: 8px;
                         border-left: 4px solid #FF4500;
                         font-size: 0.9rem;
-                        z-index: 10000;
+                        z-index: 899; /* Abaixo da notificação */
                         max-width: 250px;
                         backdrop-filter: blur(5px);
                     `;
