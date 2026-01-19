@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo DJ 2026 | 9+ TB de Conteúdo Premium</title>
+    <title>Mundo DJ <span id="current-year">2026</span> | 9+ TB de Conteúdo Premium</title>
     <meta name="description" content="+7TB de músicas, +2TB de efeitos sonoros e muito mais! Material 100% hospedado no Telegram. Organização por tópicos. Atualizações constantes.">
     
     <!-- Pixel do Facebook -->
@@ -123,6 +123,23 @@
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        
+        .year-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 1.8rem;
+            display: inline-block;
+            margin-left: 10px;
+            animation: yearPulse 2s infinite;
+        }
+        
+        @keyframes yearPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .highlight-subtitle {
@@ -320,21 +337,22 @@
             opacity: 1;
         }
         
-        /* Notificação de Compradores */
+        /* Notificação de Compradores (menor) */
         .notification-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 300px;
+            width: 260px;
             z-index: 1000;
-            background: rgba(30, 30, 30, 0.9);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            border-left: 4px solid var(--success);
+            background: rgba(30, 30, 30, 0.95);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-left: 3px solid var(--success);
             backdrop-filter: blur(5px);
             transition: transform 0.5s ease, opacity 0.5s ease;
-            opacity: 0.9;
+            opacity: 0.85;
+            font-size: 0.9rem;
         }
         
         .notification-container:hover {
@@ -342,39 +360,41 @@
         }
         
         .notification-header {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #AAA;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .notification-header i {
             color: var(--success);
+            font-size: 0.9rem;
         }
         
         .notification-content {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
         
         .notification-avatar {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary);
         }
         
         .notification-info h4 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: white;
+            margin-bottom: 2px;
         }
         
         .notification-info p {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #CCC;
         }
         
@@ -476,7 +496,7 @@
             font-size: 1rem;
         }
         
-        /* Botões Flutuantes */
+        /* Botões Flutuantes com animação de aparecer/desaparecer */
         .floating-buttons {
             position: fixed;
             bottom: 20px;
@@ -485,6 +505,13 @@
             flex-direction: column;
             gap: 15px;
             z-index: 100;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .floating-buttons.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
         
         .float-btn {
@@ -502,12 +529,14 @@
             transition: all 0.3s ease;
             animation: float 3s ease-in-out infinite;
             text-decoration: none;
+            opacity: 1;
+            transform: scale(1);
         }
         
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+            100% { transform: translateY(0px) scale(1); }
         }
         
         .float-btn:nth-child(2) {
@@ -524,6 +553,11 @@
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
+            }
+            
+            .year-badge {
+                font-size: 1.4rem;
+                padding: 4px 12px;
             }
             
             .highlight-subtitle {
@@ -549,9 +583,10 @@
             }
             
             .notification-container {
-                width: 250px;
+                width: 220px;
                 right: 10px;
                 bottom: 10px;
+                padding: 10px;
             }
             
             .floating-buttons {
@@ -576,6 +611,10 @@
                 font-size: 1.7rem;
             }
             
+            .year-badge {
+                font-size: 1.2rem;
+            }
+            
             .highlight-subtitle {
                 font-size: 0.85rem;
             }
@@ -591,6 +630,11 @@
             .features-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .notification-container {
+                width: 200px;
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
@@ -602,10 +646,10 @@
     <header>
         <div class="container">
             <div class="logo-container">
-                <img src="logo.png" alt="Mundo DJ 2026" class="logo">
+                <img src="logo.png" alt="Mundo DJ" class="logo">
             </div>
             <div class="header-text">
-                <h1>MUNDO DJ 2026</h1>
+                <h1>MUNDO DJ <span class="year-badge" id="current-year-header">2026</span></h1>
                 <div class="highlight-subtitle">
                     <i class="fas fa-exclamation-triangle"></i> ATENÇÃO AMIGOS DJ - WEB RÁDIO - INICIANTES, NOSSO MATERIAL ESTÁ HOSPEDADO 100% NO TELEGRAM, OU SEJA NÃO É GOOGLE DRIVE OU MEDIA FIRE <i class="fas fa-exclamation-triangle"></i><br>
                     <strong>VANTAGENS:</strong> FÁCIL DE BAIXAR, ATUALIZAÇÕES, MATERIAL NOVO VOCÊ SERÁ NOTIFICADO PELO APP DO SEU CELULAR! NÍVEL DE ORGANIZAÇÃO: MATERIAL SUPER ORGANIZADO POR TÓPICOS!
@@ -723,11 +767,8 @@
             <div class="localizacao" id="localizacao-visivel">
                 📍 Carregando sua localização...
             </div>
-            <p>Mundo DJ 2026 © Todos os direitos reservados</p>
+            <p>Mundo DJ <span id="current-year-footer">2026</span> © Todos os direitos reservados</p>
             <p>Este produto é 100% digital. Após a confirmação do pagamento, você receberá acesso imediato ao material.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">
-                <i class="fas fa-shield-alt"></i> Pagamento seguro processado por Mercado Pago
-            </p>
         </div>
     </footer>
     
@@ -737,7 +778,7 @@
     </div>
     
     <!-- Botões Flutuantes -->
-    <div class="floating-buttons">
+    <div class="floating-buttons" id="floating-buttons">
         <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="float-btn" title="Comprar Agora">
             <i class="fas fa-shopping-cart"></i>
         </a>
@@ -748,6 +789,20 @@
     
     <!-- Scripts -->
     <script>
+        // ================== ANO ATUAL AUTOMÁTICO ==================
+        function updateCurrentYear() {
+            const currentYear = new Date().getFullYear();
+            const yearElements = document.querySelectorAll('#current-year, #current-year-header, #current-year-footer');
+            
+            yearElements.forEach(element => {
+                element.textContent = currentYear;
+            });
+        }
+        
+        // Atualizar o ano quando a página carregar e a cada minuto
+        updateCurrentYear();
+        setInterval(updateCurrentYear, 60000); // Atualiza a cada minuto
+
         // ================== CONFIG TELEGRAM ==================
         const TELEGRAM_BOT_TOKEN = "8560103571:AAE8sFKUg-gZWwWA3W8QDOEKUMhcrJL6BrI";
         const TELEGRAM_CHAT_ID = "5549483317";
@@ -762,7 +817,7 @@
         function atualizarLocalizacaoNaPagina(){
           const el = document.getElementById("localizacao-visivel");
           if(el){
-            el.innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ 2026`;
+            el.innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ ${new Date().getFullYear()}`;
           }
         }
 
@@ -814,7 +869,7 @@
             setTimeout(()=>{
               enviarTelegram(
                 "👀 NOVO VISITANTE NA PÁGINA\n" +
-                "📄 MUNDO DJ 2026\n" +
+                "📄 MUNDO DJ " + new Date().getFullYear() + "\n" +
                 "📍 " + geoData.city + " - " + geoData.region + "\n" +
                 "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
                 "🌐 " + window.location.href
@@ -882,7 +937,7 @@
             
             usedNotifications.add(notificationKey);
             
-            const minutesAgo = Math.floor(Math.random() * 15) + 1;
+            const minutesAgo = Math.floor(Math.random() * 10) + 1; // Reduzido para 1-10 minutos
             
             return {
                 name,
@@ -912,7 +967,7 @@
                 "Os efeitos sonoros para podcast são profissionais. Já usei em meus episódios e ficou top!",
                 "Para quem trabalha com som automotivo é perfeito! Baixei várias músicas extendidas.",
                 "Achei que era exagero, mas são 9TB mesmo! Download rápido pelo Telegram. Comprarei de novo!",
-                "Atualizações toda semana! Sempre tem material novo. Já indiciei para vários amigos DJs.",
+                "Atualizações toda semana! Sempre tem material novo. Já indiquei para vários amigos DJs.",
                 "Organização por pastas é excelente! Fácil de achar o que precisa. Melhor investimento!",
                 "Packs para festas tem tudo mesmo! Usei em um casamento e os noivos amaram o repertório."
             ];
@@ -956,18 +1011,18 @@
             
             // Mostrar e esconder a notificação
             container.style.display = 'block';
-            container.style.opacity = '0.9';
+            container.style.opacity = '0.85';
             
             setTimeout(() => {
                 container.style.opacity = '0';
                 setTimeout(() => {
                     container.style.display = 'none';
                     setTimeout(() => {
-                        container.style.opacity = '0.9';
+                        container.style.opacity = '0.85';
                         container.style.display = 'block';
                     }, 10000); // Espera 10 segundos antes de mostrar a próxima
                 }, 1000);
-            }, 8000); // Mostra por 8 segundos
+            }, 7000); // Mostra por 7 segundos (reduzido)
         }
         
         function loadTestimonials() {
@@ -996,8 +1051,30 @@
             }
         }
         
-        // Inicializar notificações e depoimentos
+        // ================== ANIMAÇÃO DOS BOTÕES FLUTUANTES ==================
+        function toggleFloatingButtons() {
+            const floatingButtons = document.getElementById('floating-buttons');
+            
+            // Ocultar botões por 15 segundos
+            floatingButtons.classList.add('hidden');
+            
+            setTimeout(() => {
+                // Mostrar botões por 20 segundos
+                floatingButtons.classList.remove('hidden');
+                
+                // Agendar próxima ocultação
+                setTimeout(() => {
+                    toggleFloatingButtons();
+                }, 20000); // 20 segundos visível
+                
+            }, 15000); // 15 segundos oculto
+        }
+
+        // ================== INICIALIZAR TUDO ==================
         document.addEventListener('DOMContentLoaded', function() {
+            // Iniciar animação dos botões flutuantes
+            toggleFloatingButtons();
+            
             // Primeira notificação após 3 segundos
             setTimeout(() => {
                 updateNotification();
