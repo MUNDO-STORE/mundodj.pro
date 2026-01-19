@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo DJ 2026 | 9+ TB de Conteúdo Premium</title>
+    <meta name="description" content="+7TB de músicas, +2TB de efeitos sonoros e muito mais! Material 100% hospedado no Telegram. Organização por tópicos. Atualizações constantes.">
+    
+    <!-- Pixel do Facebook -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '25652670291043537');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=25652670291043537&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <!-- Preload de recursos -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" as="style">
+    <link rel="preload" href="logo.png" as="image">
+    <link rel="preload" href="fundo.jpg" as="image">
+    <link rel="preload" href="dj.png" as="image">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap">
+    
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --primary-dark: #6A1B9A;
+            --secondary: #FF4500;
+            --dark: #121212;
+            --light: #F8F9FA;
+            --gray: #2D2D2D;
+            --success: #00C851;
+            --pulse-color: rgba(138, 43, 226, 0.5);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            background-image: url('fundo.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 40px;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            max-width: 180px;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.7));
+            animation: logoGlow 3s infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            0% { filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.7)); }
+            100% { filter: drop-shadow(0 0 15px rgba(138, 43, 226, 1)); }
+        }
+        
+        .header-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .highlight-subtitle {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
+            border-left: 5px solid var(--primary);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3); }
+            50% { box-shadow: 0 5px 20px rgba(255, 69, 0, 0.5); }
+            100% { box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3); }
+        }
+        
+        /* Card Principal */
+        .main-card {
+            background: linear-gradient(145deg, rgba(45, 45, 45, 0.9), rgba(30, 30, 30, 0.9));
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 1000px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .main-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
+        }
+        
+        .card-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .dj-image-container {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            border: 3px solid var(--primary);
+        }
+        
+        .dj-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .dj-image-container:hover .dj-image {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .card-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .price-small {
+            font-size: 1.2rem;
+            color: #CCC;
+        }
+        
+        /* Lista de Itens */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .feature-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .feature-item i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .telegram-highlight {
+            background-color: rgba(0, 194, 133, 0.15);
+            border: 2px solid var(--success);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 25px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .telegram-highlight i {
+            color: #0088cc;
+            font-size: 2rem;
+        }
+        
+        /* Botão de Compra */
+        .purchase-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .purchase-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding: 20px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: btnPulse 2s infinite;
+        }
+        
+        @keyframes btnPulse {
+            0% { box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); }
+            50% { box-shadow: 0 10px 30px rgba(138, 43, 226, 0.7); }
+            100% { box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); }
+        }
+        
+        .purchase-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.6);
+        }
+        
+        .purchase-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .purchase-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-dark), #D84315);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .purchase-btn:hover::after {
+            opacity: 1;
+        }
+        
+        /* Notificação de Compradores */
+        .notification-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            z-index: 1000;
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border-left: 4px solid var(--success);
+            backdrop-filter: blur(5px);
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0.9;
+        }
+        
+        .notification-container:hover {
+            opacity: 1;
+        }
+        
+        .notification-header {
+            font-size: 0.9rem;
+            color: #AAA;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .notification-header i {
+            color: var(--success);
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .notification-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        
+        .notification-info h4 {
+            font-size: 1rem;
+            color: white;
+        }
+        
+        .notification-info p {
+            font-size: 0.85rem;
+            color: #CCC;
+        }
+        
+        /* Depoimentos */
+        .testimonials-section {
+            margin: 80px 0 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background: rgba(45, 45, 45, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+        }
+        
+        .testimonial-info h4 {
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .testimonial-info p {
+            font-size: 0.9rem;
+            color: #AAA;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.5;
+            color: #DDD;
+            margin-top: 10px;
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--gray);
+            color: #AAA;
+            font-size: 0.9rem;
+        }
+        
+        .localizacao {
+            margin-bottom: 15px;
+            color: #CCC;
+            font-size: 1rem;
+        }
+        
+        /* Botões Flutuantes */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-btn:nth-child(2) {
+            animation-delay: 0.5s;
+            background: linear-gradient(135deg, var(--secondary), #D84315);
+        }
+        
+        .float-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.5);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .highlight-subtitle {
+                font-size: 0.95rem;
+                padding: 10px 15px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+            }
+            
+            .card-title {
+                font-size: 1.8rem;
+            }
+            
+            .card-price {
+                font-size: 2.5rem;
+            }
+            
+            .purchase-btn {
+                font-size: 1.5rem;
+                padding: 15px 40px;
+            }
+            
+            .notification-container {
+                width: 250px;
+                right: 10px;
+                bottom: 10px;
+            }
+            
+            .floating-buttons {
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .float-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            
+            .highlight-subtitle {
+                font-size: 0.85rem;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .card-price {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Localização do usuário -->
+    <div id="localizacao-usuario" style="display:none;">📍 Carregando...</div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.png" alt="Mundo DJ 2026" class="logo">
+            </div>
+            <div class="header-text">
+                <h1>MUNDO DJ 2026</h1>
+                <div class="highlight-subtitle">
+                    <i class="fas fa-exclamation-triangle"></i> ATENÇÃO AMIGOS DJ - WEB RÁDIO - INICIANTES, NOSSO MATERIAL ESTÁ HOSPEDADO 100% NO TELEGRAM, OU SEJA NÃO É GOOGLE DRIVE OU MEDIA FIRE <i class="fas fa-exclamation-triangle"></i><br>
+                    <strong>VANTAGENS:</strong> FÁCIL DE BAIXAR, ATUALIZAÇÕES, MATERIAL NOVO VOCÊ SERÁ NOTIFICADO PELO APP DO SEU CELULAR! NÍVEL DE ORGANIZAÇÃO: MATERIAL SUPER ORGANIZADO POR TÓPICOS!
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Card Principal -->
+    <main class="container">
+        <div class="main-card">
+            <div class="card-header">
+                <div class="dj-image-container">
+                    <img src="dj.png" alt="Pack DJ Premium" class="dj-image">
+                </div>
+                <div class="card-content">
+                    <h2 class="card-title">SUPER PACK DJ PREMIUM</h2>
+                    <div class="card-price">R$50,00 <span class="price-small">(APENAS HOJE!)</span></div>
+                    
+                    <div class="telegram-highlight">
+                        <i class="fab fa-telegram"></i>
+                        <div>
+                            <strong>✅ 100% HOSPEDADO NO TELEGRAM!</strong><br>
+                            <strong>✅ ATUALIZAÇÕES CONSTANTES!</strong> (TUDO QUE CONSEGUIMOS JOGAMOS NO GRUPO)
+                        </div>
+                    </div>
+                    
+                    <p><strong>Após pagamento recebe os links no seu email!</strong></p>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-music"></i>
+                    <span>+7 Terabytes de músicas</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-volume-up"></i>
+                    <span>+2 Terabytes de efeitos sonoros</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-podcast"></i>
+                    <span>EFEITOS PARA PODCAST OU EDIÇÃO DE VIDEOS!</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Repertórios atualizados</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-video"></i>
+                    <span>VIDEOCLIPES</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>VS E PLAYBACKS</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-clock"></i>
+                    <span>MÚSICAS EXTEND</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-desktop"></i>
+                    <span>Softwares para DJ</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>Packs para academia</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-church"></i>
+                    <span>Pack Gospel Profissional</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-headphones"></i>
+                    <span>PACK MÚSICAS ELETRÔNICA - MASHUPS - DESANDE ETC.</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-history"></i>
+                    <span>Pack DJ Retro (Discotecas, Flashback, Eurodance, etc)</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-fire"></i>
+                    <span>Pack Funk (Light, Megafunk, Eletrofunk, etc)</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-glass-cheers"></i>
+                    <span>Pack para festas (Casamento, 15 anos, Formaturas, CARNAVAL, FESTA JUNINA)</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-moon"></i>
+                    <span>MÚSICAS LOFI (PARA JOGAR, CAMINHAR, ESTUDAR, MEDITAR, DORMIR)</span>
+                </div>
+            </div>
+            
+            <div class="purchase-container">
+                <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="purchase-btn">
+                    <i class="fas fa-shopping-cart"></i> CLICK AQUI PARA COMPRAR R$50,00
+                </a>
+                <p style="margin-top: 15px; color: #CCC;">Pagamento 100% seguro • Acesso imediato após confirmação</p>
+            </div>
+        </div>
+        
+        <!-- Depoimentos -->
+        <section class="testimonials-section">
+            <h2 class="section-title">DEPOIMENTOS DE QUEM COMPROU</h2>
+            <div class="testimonials-container" id="testimonials-container">
+                <!-- Depoimentos serão carregados dinamicamente via JavaScript -->
+            </div>
+        </section>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="localizacao" id="localizacao-visivel">
+                📍 Carregando sua localização...
+            </div>
+            <p>Mundo DJ 2026 © Todos os direitos reservados</p>
+            <p>Este produto é 100% digital. Após a confirmação do pagamento, você receberá acesso imediato ao material.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                <i class="fas fa-shield-alt"></i> Pagamento seguro processado por Mercado Pago
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Notificação de Compradores em Tempo Real -->
+    <div class="notification-container" id="notification-container">
+        <!-- Conteúdo será preenchido pelo JavaScript -->
+    </div>
+    
+    <!-- Botões Flutuantes -->
+    <div class="floating-buttons">
+        <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="float-btn" title="Comprar Agora">
+            <i class="fas fa-shopping-cart"></i>
+        </a>
+        <a href="#testimonials-container" class="float-btn" title="Ver Depoimentos">
+            <i class="fas fa-comment-alt"></i>
+        </a>
+    </div>
+    
+    <!-- Scripts -->
+    <script>
+        // ================== CONFIG TELEGRAM ==================
+        const TELEGRAM_BOT_TOKEN = "8560103571:AAE8sFKUg-gZWwWA3W8QDOEKUMhcrJL6BrI";
+        const TELEGRAM_CHAT_ID = "5549483317";
+
+        // ================== DADOS GEO ==================
+        let geoData = {
+          city: "Carregando...",
+          region: "..."
+        };
+
+        // ================== MOSTRAR NA PÁGINA ==================
+        function atualizarLocalizacaoNaPagina(){
+          const el = document.getElementById("localizacao-visivel");
+          if(el){
+            el.innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ 2026`;
+          }
+        }
+
+        // ================== PEGAR LOCALIZAÇÃO ==================
+        async function carregarLocalizacao(){
+          try{
+            const r = await fetch("https://ipapi.co/json/");
+            const d = await r.json();
+            if(d.city && d.region){
+              geoData.city = d.city;
+              geoData.region = d.region;
+              atualizarLocalizacaoNaPagina();
+              return;
+            }
+          }catch(e){}
+
+          try{
+            const r2 = await fetch("https://ipwho.is/");
+            const d2 = await r2.json();
+            if(d2.city && d2.region){
+              geoData.city = d2.city;
+              geoData.region = d2.region;
+              atualizarLocalizacaoNaPagina();
+              return;
+            }
+          }catch(e){}
+
+          geoData.city = "Não identificado";
+          geoData.region = "Brasil";
+          atualizarLocalizacaoNaPagina();
+        }
+
+        // ================== ENVIAR TELEGRAM ==================
+        function enviarTelegram(msg){
+          fetch(
+            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage` +
+            `?chat_id=${TELEGRAM_CHAT_ID}` +
+            `&text=${encodeURIComponent(msg)}`
+          );
+        }
+
+        // ================== VISITA NA PÁGINA ==================
+        (async ()=>{
+          await carregarLocalizacao();
+
+          if(!sessionStorage.getItem("visitou")){
+            sessionStorage.setItem("visitou","1");
+
+            setTimeout(()=>{
+              enviarTelegram(
+                "👀 NOVO VISITANTE NA PÁGINA\n" +
+                "📄 MUNDO DJ 2026\n" +
+                "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                "🌐 " + window.location.href
+              );
+            }, 2000);
+          }
+        })();
+
+        // ================== CLIQUE EM BOTÕES ==================
+        document.addEventListener("click", async e=>{
+          const btn = e.target.closest("a, button");
+          if(!btn) return;
+
+          if(!geoData.city || geoData.city === "Carregando..."){
+            await carregarLocalizacao();
+          }
+
+          enviarTelegram(
+            "🖱 CLIQUE NA PÁGINA\n" +
+            "🔘 " + (btn.innerText || btn.title || "Elemento") + "\n" +
+            "📍 " + geoData.city + " - " + geoData.region + "\n" +
+            "🕒 " + new Date().toLocaleString("pt-BR")
+          );
+        });
+
+        // ================== NOTIFICAÇÕES DE COMPRA ==================
+        const maleNames = ["Carlos", "João", "Pedro", "Lucas", "Mateus", "Gabriel", "Rafael", "Daniel", "Bruno", "André", "Marcos", "Felipe", "Thiago", "Alex", "Vinicius"];
+        const femaleNames = ["Ana", "Maria", "Julia", "Beatriz", "Camila", "Fernanda", "Patricia", "Amanda", "Letícia", "Isabella", "Laura", "Claudia", "Renata", "Mariana", "Tatiane"];
+        const estados = ["SP", "RJ", "MG", "RS", "PR", "SC", "BA", "PE", "CE", "DF", "GO", "ES", "AM", "PA"];
+        
+        const malePhotos = [
+            "https://randomuser.me/api/portraits/men/32.jpg",
+            "https://randomuser.me/api/portraits/men/22.jpg",
+            "https://randomuser.me/api/portraits/men/67.jpg",
+            "https://randomuser.me/api/portraits/men/45.jpg",
+            "https://randomuser.me/api/portraits/men/55.jpg"
+        ];
+        
+        const femalePhotos = [
+            "https://randomuser.me/api/portraits/women/32.jpg",
+            "https://randomuser.me/api/portraits/women/22.jpg",
+            "https://randomuser.me/api/portraits/women/67.jpg",
+            "https://randomuser.me/api/portraits/women/45.jpg",
+            "https://randomuser.me/api/portraits/women/55.jpg"
+        ];
+        
+        const usedNotifications = new Set();
+        const usedTestimonials = new Set();
+        
+        function generateRandomNotification() {
+            const isMale = Math.random() > 0.5;
+            const names = isMale ? maleNames : femaleNames;
+            const photos = isMale ? malePhotos : femalePhotos;
+            
+            const name = names[Math.floor(Math.random() * names.length)];
+            const photo = photos[Math.floor(Math.random() * photos.length)];
+            const estado = estados[Math.floor(Math.random() * estados.length)];
+            const social = Math.random() > 0.5 ? "Facebook" : "Instagram";
+            
+            const notificationKey = `${name}-${estado}`;
+            
+            if (usedNotifications.has(notificationKey) && usedNotifications.size < (maleNames.length + femaleNames.length)) {
+                return generateRandomNotification();
+            }
+            
+            usedNotifications.add(notificationKey);
+            
+            const minutesAgo = Math.floor(Math.random() * 15) + 1;
+            
+            return {
+                name,
+                photo,
+                estado,
+                social,
+                time: `${minutesAgo} min atrás`,
+                key: notificationKey
+            };
+        }
+        
+        function generateRandomTestimonial() {
+            const isMale = Math.random() > 0.5;
+            const names = isMale ? maleNames : femaleNames;
+            const photos = isMale ? malePhotos : femalePhotos;
+            
+            const name = names[Math.floor(Math.random() * names.length)];
+            const photo = photos[Math.floor(Math.random() * photos.length)];
+            const estado = estados[Math.floor(Math.random() * estados.length)];
+            const social = Math.random() > 0.5 ? "Facebook" : "Instagram";
+            
+            const testimonials = [
+                "Comprei há uma semana e já baixei 500GB de músicas! Organização impecável no Telegram, muito melhor que Drive!",
+                "Material completo demais! Os packs de funk e eletrônica são sensacionais. Vale cada centavo!",
+                "Nunca vi um acervo tão organizado. A busca por gêneros é muito fácil no Telegram. Recomendo!",
+                "Como iniciante, esse pack me salvou! Tem tudo que preciso e as atualizações são constantes.",
+                "Os efeitos sonoros para podcast são profissionais. Já usei em meus episódios e ficou top!",
+                "Para quem trabalha com som automotivo é perfeito! Baixei várias músicas extendidas.",
+                "Achei que era exagero, mas são 9TB mesmo! Download rápido pelo Telegram. Comprarei de novo!",
+                "Atualizações toda semana! Sempre tem material novo. Já indiciei para vários amigos DJs.",
+                "Organização por pastas é excelente! Fácil de achar o que precisa. Melhor investimento!",
+                "Packs para festas tem tudo mesmo! Usei em um casamento e os noivos amaram o repertório."
+            ];
+            
+            const testimonial = testimonials[Math.floor(Math.random() * testimonials.length)];
+            
+            const testimonialKey = `${name}-${estado}-${testimonial.substring(0, 20)}`;
+            
+            if (usedTestimonials.has(testimonialKey) && usedTestimonials.size < testimonials.length) {
+                return generateRandomTestimonial();
+            }
+            
+            usedTestimonials.add(testimonialKey);
+            
+            return {
+                name,
+                photo,
+                estado,
+                social,
+                testimonial,
+                key: testimonialKey
+            };
+        }
+        
+        function updateNotification() {
+            const notification = generateRandomNotification();
+            const container = document.getElementById('notification-container');
+            
+            container.innerHTML = `
+                <div class="notification-header">
+                    <i class="fas fa-bell"></i> Compra realizada agora há pouco
+                </div>
+                <div class="notification-content">
+                    <img src="${notification.photo}" alt="${notification.name}" class="notification-avatar">
+                    <div class="notification-info">
+                        <h4>${notification.name}</h4>
+                        <p>${notification.estado} • ${notification.social} • ${notification.time}</p>
+                    </div>
+                </div>
+            `;
+            
+            // Mostrar e esconder a notificação
+            container.style.display = 'block';
+            container.style.opacity = '0.9';
+            
+            setTimeout(() => {
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    setTimeout(() => {
+                        container.style.opacity = '0.9';
+                        container.style.display = 'block';
+                    }, 10000); // Espera 10 segundos antes de mostrar a próxima
+                }, 1000);
+            }, 8000); // Mostra por 8 segundos
+        }
+        
+        function loadTestimonials() {
+            const container = document.getElementById('testimonials-container');
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 5; i++) {
+                const testimonial = generateRandomTestimonial();
+                
+                const testimonialElement = document.createElement('div');
+                testimonialElement.className = 'testimonial-card';
+                testimonialElement.innerHTML = `
+                    <div class="testimonial-header">
+                        <img src="${testimonial.photo}" alt="${testimonial.name}" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>${testimonial.name}</h4>
+                            <p>${testimonial.estado} • ${testimonial.social}</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        "${testimonial.testimonial}"
+                    </div>
+                `;
+                
+                container.appendChild(testimonialElement);
+            }
+        }
+        
+        // Inicializar notificações e depoimentos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Primeira notificação após 3 segundos
+            setTimeout(() => {
+                updateNotification();
+            }, 3000);
+            
+            // Atualizar notificação a cada 1 minuto
+            setInterval(updateNotification, 60000);
+            
+            // Carregar depoimentos iniciais
+            loadTestimonials();
+            
+            // Atualizar depoimentos a cada 40 segundos
+            setInterval(loadTestimonials, 40000);
+            
+            // Tradução automática para visitantes fora do Brasil
+            setTimeout(() => {
+                if (geoData.region !== "Brasil" && geoData.region !== "Brazil" && geoData.region !== "...") {
+                    const translateNotice = document.createElement('div');
+                    translateNotice.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: rgba(0, 0, 0, 0.8);
+                        color: white;
+                        padding: 10px 15px;
+                        border-radius: 8px;
+                        border-left: 4px solid #FF4500;
+                        font-size: 0.9rem;
+                        z-index: 10000;
+                        max-width: 250px;
+                        backdrop-filter: blur(5px);
+                    `;
+                    translateNotice.innerHTML = `<i class="fas fa-language"></i> <strong>Translate:</strong> This page can be translated to your language automatically.`;
+                    document.body.appendChild(translateNotice);
+                    
+                    setTimeout(() => {
+                        translateNotice.style.opacity = '0';
+                        translateNotice.style.transition = 'opacity 1s';
+                        setTimeout(() => document.body.removeChild(translateNotice), 1000);
+                    }, 7000);
+                }
+            }, 5000);
+        });
+
+        // Detectar clique no botão de compra e enviar para o Telegram
+        document.querySelector('.purchase-btn').addEventListener('click', async function(e) {
+            if(!geoData.city || geoData.city === "Carregando..."){
+                await carregarLocalizacao();
+            }
+            
+            enviarTelegram(
+                "🔥 CLIQUE NO BOTÃO DE COMPRA\n" +
+                "💵 Super Pack DJ Premium - R$50,00\n" +
+                "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                "🔗 Redirecionando para checkout..."
+            );
+        });
+    </script>
+</body>
+</html>
