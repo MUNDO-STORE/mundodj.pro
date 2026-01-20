@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo DJ <span id="current-year">2026</span> | 9+ TB de Conteúdo Premium</title>
+    <title>Mundo DJ <span id="current-year">2026</span> | 9+ TB de Conteúdo Premium para DJs</title>
     <meta name="description" content="+7TB de músicas, +2TB de efeitos sonoros e muito mais! Material 100% hospedado no Telegram. Organização por tópicos. Atualizações constantes.">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap">
     
-    <!-- Pixel do Facebook -->
+    <!-- Facebook Pixel -->
     <script>
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -23,17 +26,8 @@
         src="https://www.facebook.com/tr?id=25652670291043537&ev=PageView&noscript=1"
     /></noscript>
     
-    <!-- Preload de recursos -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" as="style">
-    <link rel="preload" href="logo.png" as="image">
-    <link rel="preload" href="fundo.jpg" as="image">
-    <link rel="preload" href="dj.png" as="image">
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap">
-    
     <style>
+        /* ===== VARIÁVEIS E RESET ===== */
         :root {
             --primary: #8A2BE2;
             --primary-dark: #6A1B9A;
@@ -42,18 +36,25 @@
             --light: #F8F9FA;
             --gray: #2D2D2D;
             --success: #00C851;
-            --pulse-color: rgba(138, 43, 226, 0.5);
             --whatsapp: #25D366;
+            --card-bg: rgba(45, 45, 45, 0.9);
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 15px 40px rgba(138, 43, 226, 0.4);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
+            font-family: 'Roboto', sans-serif;
             background-color: var(--dark);
             color: var(--light);
             background-image: url('fundo.jpg');
@@ -84,46 +85,120 @@
             z-index: 1;
         }
         
-        /* Header */
-        header {
-            padding: 20px 0;
-            border-bottom: 2px solid var(--primary);
-            margin-bottom: 40px;
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
         }
         
-        .logo-container {
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
             text-align: center;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(138, 43, 226, 0.5);
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(90deg, #444, #666);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        /* ===== HEADER STICKY ===== */
+        header {
+            background: rgba(18, 18, 18, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .logo {
-            max-width: 180px;
+            max-width: 140px;
             height: auto;
             filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.7));
-            animation: logoGlow 3s infinite alternate;
         }
         
-        @keyframes logoGlow {
-            0% { filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.7)); }
-            100% { filter: drop-shadow(0 0 15px rgba(138, 43, 226, 1)); }
+        .header-cta {
+            display: flex;
+            gap: 15px;
+            align-items: center;
         }
         
-        .header-text {
+        .header-cta .btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 80px 0 60px;
             text-align: center;
-            margin-top: 20px;
         }
         
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 800;
+        .hero h1 {
+            font-size: 3rem;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
         
         .year-badge {
@@ -143,102 +218,138 @@
             100% { transform: scale(1); }
         }
         
-        .highlight-subtitle {
-            background-color: var(--secondary);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            max-width: 900px;
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #CCC;
+            max-width: 800px;
             margin: 0 auto 30px;
-            box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3);
-            border-left: 5px solid var(--primary);
-            animation: pulse 2s infinite;
+            line-height: 1.6;
         }
         
-        @keyframes pulse {
-            0% { box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3); }
-            50% { box-shadow: 0 5px 20px rgba(255, 69, 0, 0.5); }
-            100% { box-shadow: 0 5px 15px rgba(255, 69, 0, 0.3); }
+        /* ===== BENEFITS SECTION ===== */
+        .benefits {
+            padding: 80px 0;
         }
         
-        /* Card Principal */
-        .main-card {
-            background: linear-gradient(145deg, rgba(45, 45, 45, 0.9), rgba(30, 30, 30, 0.9));
-            border-radius: 20px;
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+        
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: 15px;
             padding: 30px;
-            margin: 40px auto;
-            max-width: 1000px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 2px solid var(--primary);
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        /* ===== PACKS SECTION ===== */
+        .packs {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .pack-highlight {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 3px solid var(--primary);
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .main-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.3);
-        }
-        
-        .card-header {
+        .pack-header {
             display: flex;
             flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
             align-items: center;
-            gap: 30px;
-            margin-bottom: 25px;
         }
         
-        .dj-image-container {
+        .pack-image {
             flex: 1;
             min-width: 300px;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-            border: 3px solid var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
         
-        .dj-image {
+        .pack-image img {
             width: 100%;
             height: auto;
-            display: block;
             transition: transform 0.5s ease;
         }
         
-        .dj-image-container:hover .dj-image {
+        .pack-image:hover img {
             transform: scale(1.05);
         }
         
-        .card-content {
+        .pack-info {
             flex: 1;
             min-width: 300px;
         }
         
-        .card-title {
-            font-family: 'Montserrat', sans-serif;
+        .pack-info h2 {
             font-size: 2.2rem;
             margin-bottom: 15px;
             color: white;
         }
         
-        .card-price {
+        .pack-price {
             font-size: 3rem;
             font-weight: 800;
             color: var(--secondary);
             margin-bottom: 20px;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
         
-        .price-small {
-            font-size: 1.2rem;
+        .price-note {
+            font-size: 1.1rem;
             color: #CCC;
+            margin-bottom: 20px;
         }
         
-        /* Lista de Itens */
+        .telegram-badge {
+            background: rgba(0, 194, 133, 0.15);
+            border: 2px solid var(--success);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .telegram-badge i {
+            color: #0088cc;
+            font-size: 2rem;
+        }
+        
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
@@ -250,12 +361,6 @@
             display: flex;
             align-items: center;
             border-left: 4px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            background: rgba(138, 43, 226, 0.1);
-            transform: translateX(5px);
         }
         
         .feature-item i {
@@ -264,190 +369,38 @@
             font-size: 1.2rem;
         }
         
-        .telegram-highlight {
-            background-color: rgba(0, 194, 133, 0.15);
-            border: 2px solid var(--success);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 25px 0;
+        .cta-container {
             text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            margin: 40px 0 20px;
         }
         
-        .telegram-highlight i {
-            color: #0088cc;
-            font-size: 2rem;
-        }
-        
-        /* Botão de Compra */
-        .purchase-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-        
-        .purchase-btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            font-size: 1.8rem;
-            font-weight: 700;
+        .cta-container .btn {
+            font-size: 1.5rem;
             padding: 20px 50px;
-            border-radius: 50px;
-            text-decoration: none;
-            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            animation: btnPulse 2s infinite;
         }
         
-        @keyframes btnPulse {
-            0% { box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); }
-            50% { box-shadow: 0 10px 30px rgba(138, 43, 226, 0.7); }
-            100% { box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4); }
-        }
-        
-        .purchase-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.6);
-        }
-        
-        .purchase-btn:active {
-            transform: scale(0.98);
-        }
-        
-        .purchase-btn::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-dark), #D84315);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .purchase-btn:hover::after {
-            opacity: 1;
-        }
-        
-        /* NOTIFICAÇÃO REVISADA - MOVIDA PARA OUTRO CANTO E COM Z-INDEX MAIS BAIXO */
-        .notification-container {
-            position: fixed;
-            top: 20px; /* MUDADO: Agora fica no topo */
-            right: 20px; /* MUDADO: Continua na direita mas no topo */
-            width: 260px;
-            z-index: 900; /* REDUZIDO: z-index menor que o do WhatsApp (1000) */
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 8px;
-            padding: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            border-left: 3px solid var(--success);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
-            opacity: 0.85;
-            font-size: 0.9rem;
-            pointer-events: none; /* IMPORTANTE: não interfere com cliques */
-        }
-        
-        .notification-container:hover {
-            opacity: 1;
-        }
-        
-        .notification-header {
-            font-size: 0.8rem;
-            color: #AAA;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .notification-header i {
-            color: var(--success);
-            font-size: 0.9rem;
-        }
-        
-        .notification-content {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .notification-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--primary);
-        }
-        
-        .notification-info h4 {
-            font-size: 0.95rem;
-            color: white;
-            margin-bottom: 2px;
-        }
-        
-        .notification-info p {
-            font-size: 0.8rem;
-            color: #CCC;
-        }
-        
-        /* Depoimentos */
-        .testimonials-section {
-            margin: 80px 0 40px;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: white;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            padding: 80px 0;
         }
         
         .testimonials-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
         }
         
         .testimonial-card {
-            background: rgba(45, 45, 45, 0.8);
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 25px;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
             border-top: 4px solid var(--primary);
-            transition: transform 0.3s ease;
+            transition: var(--transition);
         }
         
         .testimonial-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
         
         .testimonial-header {
@@ -479,44 +432,139 @@
             font-style: italic;
             line-height: 1.5;
             color: #DDD;
-            margin-top: 10px;
         }
         
-        /* Rodapé */
+        /* ===== FAQ SECTION ===== */
+        .faq {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* ===== FOOTER ===== */
         footer {
+            padding: 60px 0 30px;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 2px solid var(--primary);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .security-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .security-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
             text-align: center;
-            padding: 30px 0;
-            margin-top: 60px;
-            border-top: 1px solid var(--gray);
+            padding-top: 30px;
+            border-top: 1px solid #333;
             color: #AAA;
             font-size: 0.9rem;
         }
         
         .localizacao {
-            margin-bottom: 15px;
+            text-align: center;
+            margin-bottom: 20px;
             color: #CCC;
-            font-size: 1rem;
         }
         
-        /* Botões Flutuantes com animação de aparecer/desaparecer */
-        .floating-buttons {
+        /* ===== FLOATING ELEMENTS ===== */
+        .floating-cta {
             position: fixed;
-            bottom: 90px; /* AUMENTADO: mais espaço para o botão do WhatsApp */
-            left: 20px;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
             gap: 15px;
-            z-index: 1000; /* AUMENTADO: maior que a notificação */
-            opacity: 1;
-            transition: opacity 0.5s ease;
         }
         
-        .floating-buttons.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .whatsapp-float {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            animation: float 3s ease-in-out infinite;
         }
         
-        .float-btn {
+        .cart-float {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -526,430 +574,410 @@
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: float 3s ease-in-out infinite;
-            text-decoration: none;
-            opacity: 1;
-            transform: scale(1);
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+            animation: float 3s ease-in-out infinite 0.5s;
         }
         
         @keyframes float {
-            0% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-10px) scale(1.05); }
-            100% { transform: translateY(0px) scale(1); }
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
         
-        .float-btn:nth-child(2) {
-            animation-delay: 0.5s;
-            background: linear-gradient(135deg, var(--secondary), #D84315);
-        }
-        
-        .float-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(138, 43, 226, 0.5);
-        }
-        
-        /* BOTÃO WHATSAPP FLUTUANTE - PRIORIDADE MÁXIMA */
-        .whatsapp-float-btn {
+        /* ===== NOTIFICAÇÃO REDUZIDA ===== */
+        .notification {
             position: fixed;
-            bottom: 20px;
+            top: 20px;
             right: 20px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--whatsapp), #128C7E);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: whatsappFloat 3s ease-in-out infinite;
-            text-decoration: none;
-            z-index: 1000; /* PRIORIDADE MÁXIMA */
-            opacity: 0;
-            transform: scale(0.9);
-            animation-delay: 2s;
-            pointer-events: auto; /* SEMPRE CLICÁVEL */
-        }
-        
-        @keyframes whatsappFloat {
-            0% { transform: translateY(0px) scale(0.9); }
-            50% { transform: translateY(-10px) scale(0.95); }
-            100% { transform: translateY(0px) scale(0.9); }
-        }
-        
-        .whatsapp-float-btn.show {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .whatsapp-float-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
-        
-        /* Balão de texto do botão WhatsApp */
-        .whatsapp-tooltip {
-            position: absolute;
-            bottom: 80px;
-            right: 10px;
-            background: rgba(30, 30, 30, 0.95);
-            color: white;
-            padding: 12px 15px;
-            border-radius: 10px;
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 8px;
+            padding: 12px;
+            max-width: 250px;
+            z-index: 999; /* Z-INDEX REDUZIDO para ficar ATRÁS dos botões */
+            border-left: 3px solid var(--success);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: none;
             font-size: 0.85rem;
-            width: 200px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            border: 2px solid var(--whatsapp);
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-            backdrop-filter: blur(5px);
-            z-index: 1001; /* Acima do botão */
+            opacity: 0.8;
+            pointer-events: none; /* NÃO INTERFERE COM CLIQUES */
         }
         
-        .whatsapp-tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            right: 20px;
-            width: 0;
-            height: 0;
-            border-left: 8px solid transparent;
-            border-right: 8px solid transparent;
-            border-top: 8px solid var(--whatsapp);
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .benefits-grid,
+            .testimonials-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
         }
         
-        .whatsapp-float-btn:hover .whatsapp-tooltip {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsividade */
         @media (max-width: 768px) {
-            h1 {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
                 font-size: 2rem;
             }
             
             .year-badge {
                 font-size: 1.4rem;
-                padding: 4px 12px;
             }
             
-            .highlight-subtitle {
-                font-size: 0.95rem;
-                padding: 10px 15px;
-            }
-            
-            .card-header {
+            .pack-header {
                 flex-direction: column;
             }
             
-            .card-title {
+            .section-title {
                 font-size: 1.8rem;
             }
             
-            .card-price {
+            .pack-price {
                 font-size: 2.5rem;
             }
             
-            .purchase-btn {
-                font-size: 1.5rem;
-                padding: 15px 40px;
+            .floating-cta {
+                bottom: 20px;
+                right: 20px;
             }
             
-            .notification-container {
-                width: 220px;
-                right: 10px;
+            .notification {
+                max-width: 200px;
                 top: 10px;
-                padding: 10px;
-            }
-            
-            .floating-buttons {
-                bottom: 80px; /* Ajuste para mobile */
-                left: 10px;
-            }
-            
-            .float-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .whatsapp-float-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-                bottom: 10px;
                 right: 10px;
-            }
-            
-            .whatsapp-tooltip {
-                width: 180px;
-                font-size: 0.8rem;
-                right: 5px;
-                bottom: 70px;
-            }
-            
-            .testimonials-container {
-                flex-direction: column;
-                align-items: center;
             }
         }
         
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.7rem;
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
             }
             
-            .year-badge {
-                font-size: 1.2rem;
-            }
-            
-            .highlight-subtitle {
-                font-size: 0.85rem;
-            }
-            
-            .card-title {
-                font-size: 1.5rem;
-            }
-            
-            .card-price {
-                font-size: 2rem;
-            }
-            
-            .features-grid {
+            .benefits-grid,
+            .testimonials-container {
                 grid-template-columns: 1fr;
             }
             
-            .notification-container {
-                width: 180px; /* Menor no mobile */
-                font-size: 0.8rem;
-                top: 5px;
-                right: 5px;
+            .pack-highlight {
+                padding: 25px;
             }
             
-            .whatsapp-float-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
+            .cta-container .btn {
+                font-size: 1.2rem;
+                padding: 15px 30px;
             }
             
-            .whatsapp-tooltip {
-                width: 160px;
-                font-size: 0.75rem;
-                padding: 10px 12px;
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-        }
-        
-        /* Ajuste para telas muito pequenas */
-        @media (max-width: 350px) {
-            .notification-container {
-                display: none !important; /* Esconde notificação em telas muito pequenas */
+            
+            .notification {
+                display: none !important; /* ESCONDE COMPLETAMENTE EM MOBILE */
             }
         }
     </style>
 </head>
 <body>
-    <!-- Localização do usuário -->
-    <div id="localizacao-usuario" style="display:none;">📍 Carregando...</div>
-    
-    <!-- Header -->
+    <!-- Header Sticky -->
     <header>
-        <div class="container">
-            <div class="logo-container">
-                <img src="logo.png" alt="Mundo DJ" class="logo">
-            </div>
-            <div class="header-text">
-                <h1>MUNDO DJ <span class="year-badge" id="current-year-header">2026</span></h1>
-                <div class="highlight-subtitle">
-                    <i class="fas fa-exclamation-triangle"></i> ATENÇÃO AMIGOS DJ - WEB RÁDIO - INICIANTES, NOSSO MATERIAL ESTÁ HOSPEDADO 100% NO TELEGRAM, OU SEJA NÃO É GOOGLE DRIVE OU MEDIA FIRE <i class="fas fa-exclamation-triangle"></i><br>
-                    <strong>VANTAGENS:</strong> FÁCIL DE BAIXAR, ATUALIZAÇÕES, MATERIAL NOVO VOCÊ SERÁ NOTIFICADO PELO APP DO SEU CELULAR! NÍVEL DE ORGANIZAÇÃO: MATERIAL SUPER ORGANIZADO POR TÓPICOS!
-                </div>
+        <div class="container header-container">
+            <a href="#">
+                <img src="logo.png" alt="Mundo DJ" class="logo" loading="lazy">
+            </a>
+            <div class="header-cta">
+                <a href="#packs" class="btn">Ver Packs</a>
+                <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="btn btn-secondary">Comprar Agora</a>
             </div>
         </div>
     </header>
-    
-    <!-- Card Principal -->
-    <main class="container">
-        <div class="main-card">
-            <div class="card-header">
-                <div class="dj-image-container">
-                    <img src="dj.png" alt="Pack DJ Premium" class="dj-image">
-                </div>
-                <div class="card-content">
-                    <h2 class="card-title">SUPER PACK DJ PREMIUM</h2>
-                    <div class="card-price">R$50,00 <span class="price-small">(APENAS HOJE!)</span></div>
-                    
-                    <div class="telegram-highlight">
-                        <i class="fab fa-telegram"></i>
-                        <div>
-                            <strong>✅ 100% HOSPEDADO NO TELEGRAM!</strong><br>
-                            <strong>✅ ATUALIZAÇÕES CONSTANTES!</strong> (TUDO QUE CONSEGUIMOS JOGAMOS NO GRUPO)
-                        </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>MUNDO DJ <span class="year-badge" id="current-year-header">2026</span></h1>
+            <p class="hero-subtitle">+9TB de conteúdo premium para DJs • 100% hospedado no Telegram • Organização por tópicos • Atualizações constantes</p>
+            <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="btn" style="font-size: 1.3rem; padding: 18px 40px;">
+                <i class="fas fa-shopping-cart"></i> COMPRAR AGORA - R$50,00
+            </a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Porque Escolher o Mundo DJ</h2>
+            <div class="benefits-grid">
+                <article class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    
-                    <p><strong>Após pagamento recebe os links no seu email!</strong></p>
-                </div>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <i class="fas fa-music"></i>
-                    <span>+7 Terabytes de músicas</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-volume-up"></i>
-                    <span>+2 Terabytes de efeitos sonoros</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-podcast"></i>
-                    <span>EFEITOS PARA PODCAST OU EDIÇÃO DE VIDEOS!</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-sync-alt"></i>
-                    <span>Repertórios atualizados</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-video"></i>
-                    <span>VIDEOCLIPES</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-play-circle"></i>
-                    <span>VS E PLAYBACKS</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-clock"></i>
-                    <span>MÚSICAS EXTEND</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-desktop"></i>
-                    <span>Softwares para DJ</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-dumbbell"></i>
-                    <span>Packs para academia</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-church"></i>
-                    <span>Pack Gospel Profissional</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-headphones"></i>
-                    <span>PACK MÚSICAS ELETRÔNICA - MASHUPS - DESANDE ETC.</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-history"></i>
-                    <span>Pack DJ Retro (Discotecas, Flashback, Eurodance, etc)</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-fire"></i>
-                    <span>Pack Funk (Light, Megafunk, Eletrofunk, etc)</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-glass-cheers"></i>
-                    <span>Pack para festas (Casamento, 15 anos, Formaturas, CARNAVAL, FESTA JUNINA)</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-moon"></i>
-                    <span>MÚSICAS LOFI (PARA JOGAR, CAMINHAR, ESTUDAR, MEDITAR, DORMIR)</span>
-                </div>
-            </div>
-            
-            <div class="purchase-container">
-                <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="purchase-btn">
-                    <i class="fas fa-shopping-cart"></i> CLICK AQUI PARA COMPRAR R$50,00
-                </a>
-                <p style="margin-top: 15px; color: #CCC;">Pagamento 100% seguro • Acesso imediato após confirmação</p>
+                    <h3>Download Rápido</h3>
+                    <p>Material 100% hospedado no Telegram com downloads diretos e velocidade máxima.</p>
+                </article>
+                
+                <article class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Atualizações Constantes</h3>
+                    <p>Novo conteúdo adicionado regularmente. Você será notificado automaticamente.</p>
+                </article>
+                
+                <article class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>Organização Perfeita</h3>
+                    <p>Tudo categorizado por gêneros, estilos e tipos. Encontre o que precisa em segundos.</p>
+                </article>
             </div>
         </div>
-        
-        <!-- Depoimentos -->
-        <section class="testimonials-section">
-            <h2 class="section-title">DEPOIMENTOS DE QUEM COMPROU</h2>
+    </section>
+
+    <!-- Packs Section -->
+    <section class="packs" id="packs">
+        <div class="container">
+            <h2 class="section-title">Super Pack DJ Premium</h2>
+            
+            <article class="pack-highlight">
+                <div class="pack-header">
+                    <div class="pack-image">
+                        <img src="dj.png" alt="Super Pack DJ Premium" loading="lazy">
+                    </div>
+                    <div class="pack-info">
+                        <h2>Super Pack DJ Premium 2026</h2>
+                        <div class="pack-price">R$50,00</div>
+                        <p class="price-note"><strong>Apenas hoje!</strong> Preço promocional com acesso vitalício</p>
+                        
+                        <div class="telegram-badge">
+                            <i class="fab fa-telegram"></i>
+                            <div>
+                                <strong>✅ 100% HOSPEDADO NO TELEGRAM!</strong><br>
+                                <strong>✅ ATUALIZAÇÕES CONSTANTES!</strong>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Após pagamento recebe os links no seu email em até 5 minutos!</strong></p>
+                    </div>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-music"></i>
+                        <span>+7 Terabytes de músicas</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-volume-up"></i>
+                        <span>+2 Terabytes de efeitos sonoros</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-podcast"></i>
+                        <span>Efeitos para podcast ou edição de vídeos</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-video"></i>
+                        <span>Videoclipes profissionais</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-play-circle"></i>
+                        <span>VS e Playbacks</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Músicas extend versions</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-desktop"></i>
+                        <span>Softwares para DJ</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Packs para academia</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-church"></i>
+                        <span>Pack Gospel Profissional</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-headphones"></i>
+                        <span>Música eletrônica, Mashups, Desande</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-history"></i>
+                        <span>Pack DJ Retro</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-fire"></i>
+                        <span>Pack Funk completo</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-glass-cheers"></i>
+                        <span>Pack para festas e eventos</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-moon"></i>
+                        <span>Músicas LoFi para estudo e relaxamento</span>
+                    </div>
+                </div>
+                
+                <div class="cta-container" id="comprar">
+                    <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="btn">
+                        <i class="fas fa-shopping-cart"></i> CLICK AQUI PARA COMPRAR - R$50,00
+                    </a>
+                    <p style="margin-top: 15px; color: #CCC; font-size: 0.9rem;">
+                        <i class="fas fa-lock"></i> Pagamento 100% seguro • Acesso imediato após confirmação
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Depoimentos de Quem Comprou</h2>
             <div class="testimonials-container" id="testimonials-container">
-                <!-- Depoimentos serão carregados dinamicamente via JavaScript -->
+                <!-- Depoimentos serão carregados dinamicamente -->
             </div>
-        </section>
-    </main>
-    
-    <!-- Rodapé -->
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como recebo o acesso após a compra?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Imediatamente após a confirmação do pagamento, você receberá um email com todos os links de acesso aos grupos do Telegram. O acesso é vitalício!</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        O material é atualizado?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Adicionamos novos conteúdos regularmente e você será notificado automaticamente pelo aplicativo do Telegram quando houver atualizações.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Posso acessar pelo celular?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Com certeza! O Telegram funciona perfeitamente em Android e iOS. Você pode baixar os arquivos diretamente no seu celular ou computador.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        É seguro comprar?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>100% seguro! Utilizamos plataforma de pagamentos reconhecida com garantia de entrega. Já atendemos mais de 2.000 clientes satisfeitos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="localizacao" id="localizacao-visivel">
                 📍 Carregando sua localização...
             </div>
-            <p>Mundo DJ <span id="current-year-footer">2026</span> © Todos os direitos reservados</p>
-            <p>Este produto é 100% digital. Após a confirmação do pagamento, você receberá acesso imediato ao material.</p>
+            
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="logo.png" alt="Mundo DJ" class="footer-logo" loading="lazy">
+                    <p>+9TB de conteúdo premium para DJs desde 2020. Material organizado e atualizado constantemente.</p>
+                    <div class="security-badges">
+                        <span class="security-badge"><i class="fas fa-lock"></i> Pagamento Seguro</span>
+                        <span class="security-badge"><i class="fas fa-shipping-fast"></i> Entrega Imediata</span>
+                        <span class="security-badge"><i class="fas fa-headset"></i> Suporte</span>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#packs">Ver Packs</a></li>
+                        <li><a href="https://mundodj.erby.site/product/175404124573260141827089642420">Comprar Agora</a></li>
+                        <li><a href="#testimonials-container">Depoimentos</a></li>
+                        <li><a href="#faq">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://wa.link/0eu5ce" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                        <li><a href="https://t.me/mundodj" target="_blank"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        <li><a href="mailto:contato@mundodj.com"><i class="fas fa-envelope"></i> Email</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Formas de Pagamento</h3>
+                    <p>Cartão de crédito • PIX • Boleto • PayPal</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #AAA;">
+                        Compra 100% segura com garantia de 7 dias.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>Mundo DJ <span id="current-year-footer">2026</span> © Todos os direitos reservados</p>
+                <p>Este produto é 100% digital. Após a confirmação do pagamento, você receberá acesso imediato ao material.</p>
+            </div>
         </div>
     </footer>
-    
-    <!-- Notificação de Compradores em Tempo Real (AGORA NO TOPO DIREITO) -->
-    <div class="notification-container" id="notification-container">
-        <!-- Conteúdo será preenchido pelo JavaScript -->
-    </div>
-    
-    <!-- Botões Flutuantes -->
-    <div class="floating-buttons" id="floating-buttons">
-        <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="float-btn" title="Comprar Agora">
+
+    <!-- Floating CTA Buttons -->
+    <div class="floating-cta">
+        <a href="https://wa.link/0eu5ce" class="whatsapp-float" target="_blank" title="Comprar pelo WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://mundodj.erby.site/product/175404124573260141827089642420" class="cart-float" title="Comprar Agora">
             <i class="fas fa-shopping-cart"></i>
         </a>
-        <a href="#testimonials-container" class="float-btn" title="Ver Depoimentos">
-            <i class="fas fa-comment-alt"></i>
-        </a>
     </div>
-    
-    <!-- BOTÃO WHATSAPP FLUTUANTE - AGORA COM PRIORIDADE -->
-    <a href="https://wa.link/0eu5ce" class="whatsapp-float-btn" id="whatsapp-float-btn" target="_blank" title="Comprar pelo WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <div class="whatsapp-tooltip">
-            <strong>Medo de golpes?</strong><br>
-            Compre diretamente pelo WhatsApp!<br>
-            Acesso mais seguro e rápido!
-        </div>
-    </a>
-    
-    <!-- Scripts -->
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
     <script>
-        // ================== ANO ATUAL AUTOMÁTICO ==================
+        // ================== ANO ATUAL ==================
         function updateCurrentYear() {
             const currentYear = new Date().getFullYear();
-            const yearElements = document.querySelectorAll('#current-year, #current-year-header, #current-year-footer');
-            
-            yearElements.forEach(element => {
-                element.textContent = currentYear;
+            document.querySelectorAll('#current-year, #current-year-header, #current-year-footer').forEach(el => {
+                el.textContent = currentYear;
             });
         }
-        
-        // Atualizar o ano quando a página carregar e a cada minuto
         updateCurrentYear();
-        setInterval(updateCurrentYear, 60000); // Atualiza a cada minuto
 
-        // ================== CONFIG TELEGRAM ==================
+        // ================== CONFIGURAÇÕES ==================
         const TELEGRAM_BOT_TOKEN = "8560103571:AAE8sFKUg-gZWwWA3W8QDOEKUMhcrJL6BrI";
         const TELEGRAM_CHAT_ID = "5549483317";
+        let geoData = { city: "Carregando...", region: "..." };
 
-        // ================== DADOS GEO ==================
-        let geoData = {
-          city: "Carregando...",
-          region: "..."
-        };
-
-        // ================== MOSTRAR NA PÁGINA ==================
-        function atualizarLocalizacaoNaPagina(){
-          const el = document.getElementById("localizacao-visivel");
-          if(el){
-            el.innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ ${new Date().getFullYear()}`;
-          }
-        }
-
-        // ================== PEGAR LOCALIZAÇÃO ==================
+        // ================== LOCALIZAÇÃO ==================
         async function carregarLocalizacao(){
           try{
             const r = await fetch("https://ipapi.co/json/");
@@ -957,7 +985,7 @@
             if(d.city && d.region){
               geoData.city = d.city;
               geoData.region = d.region;
-              atualizarLocalizacaoNaPagina();
+              document.getElementById("localizacao-visivel").innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ ${new Date().getFullYear()}`;
               return;
             }
           }catch(e){}
@@ -968,32 +996,26 @@
             if(d2.city && d2.region){
               geoData.city = d2.city;
               geoData.region = d2.region;
-              atualizarLocalizacaoNaPagina();
+              document.getElementById("localizacao-visivel").innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ ${new Date().getFullYear()}`;
               return;
             }
           }catch(e){}
 
           geoData.city = "Não identificado";
           geoData.region = "Brasil";
-          atualizarLocalizacaoNaPagina();
+          document.getElementById("localizacao-visivel").innerHTML = `📍 ${geoData.city} - ${geoData.region} | Acesso via Mundo DJ ${new Date().getFullYear()}`;
         }
 
-        // ================== ENVIAR TELEGRAM ==================
         function enviarTelegram(msg){
-          fetch(
-            `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage` +
-            `?chat_id=${TELEGRAM_CHAT_ID}` +
-            `&text=${encodeURIComponent(msg)}`
-          );
+          fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(msg)}`);
         }
 
-        // ================== VISITA NA PÁGINA ==================
+        // ================== TRACKING DE VISITAS ==================
         (async ()=>{
           await carregarLocalizacao();
 
           if(!sessionStorage.getItem("visitou")){
             sessionStorage.setItem("visitou","1");
-
             setTimeout(()=>{
               enviarTelegram(
                 "👀 NOVO VISITANTE NA PÁGINA\n" +
@@ -1006,306 +1028,244 @@
           }
         })();
 
-        // ================== CLIQUE EM BOTÕES ==================
-        document.addEventListener("click", async e=>{
-          const btn = e.target.closest("a, button");
-          if(!btn) return;
-
-          if(!geoData.city || geoData.city === "Carregando..."){
-            await carregarLocalizacao();
-          }
-
-          enviarTelegram(
-            "🖱 CLIQUE NA PÁGINA\n" +
-            "🔘 " + (btn.innerText || btn.title || "Elemento") + "\n" +
-            "📍 " + geoData.city + " - " + geoData.region + "\n" +
-            "🕒 " + new Date().toLocaleString("pt-BR")
-          );
-        });
-
-        // ================== NOTIFICAÇÕES DE COMPRA ==================
-        const maleNames = ["Carlos", "João", "Pedro", "Lucas", "Mateus", "Gabriel", "Rafael", "Daniel", "Bruno", "André", "Marcos", "Felipe", "Thiago", "Alex", "Vinicius"];
-        const femaleNames = ["Ana", "Maria", "Julia", "Beatriz", "Camila", "Fernanda", "Patricia", "Amanda", "Letícia", "Isabella", "Laura", "Claudia", "Renata", "Mariana", "Tatiane"];
-        const estados = ["SP", "RJ", "MG", "RS", "PR", "SC", "BA", "PE", "CE", "DF", "GO", "ES", "AM", "PA"];
+        // ================== DEPOIMENTOS DINÂMICOS ==================
+        const maleNames = ["Carlos", "João", "Pedro", "Lucas", "Mateus", "Gabriel", "Rafael", "Daniel", "Bruno"];
+        const femaleNames = ["Ana", "Maria", "Julia", "Beatriz", "Camila", "Fernanda", "Patricia", "Amanda"];
+        const estados = ["SP", "RJ", "MG", "RS", "PR", "SC", "BA", "PE", "CE", "DF"];
         
         const malePhotos = [
             "https://randomuser.me/api/portraits/men/32.jpg",
             "https://randomuser.me/api/portraits/men/22.jpg",
             "https://randomuser.me/api/portraits/men/67.jpg",
-            "https://randomuser.me/api/portraits/men/45.jpg",
-            "https://randomuser.me/api/portraits/men/55.jpg"
+            "https://randomuser.me/api/portraits/men/45.jpg"
         ];
         
         const femalePhotos = [
             "https://randomuser.me/api/portraits/women/32.jpg",
             "https://randomuser.me/api/portraits/women/22.jpg",
             "https://randomuser.me/api/portraits/women/67.jpg",
-            "https://randomuser.me/api/portraits/women/45.jpg",
-            "https://randomuser.me/api/portraits/women/55.jpg"
+            "https://randomuser.me/api/portraits/women/45.jpg"
         ];
         
-        const usedNotifications = new Set();
-        const usedTestimonials = new Set();
-        
-        function generateRandomNotification() {
-            const isMale = Math.random() > 0.5;
-            const names = isMale ? maleNames : femaleNames;
-            const photos = isMale ? malePhotos : femalePhotos;
-            
-            const name = names[Math.floor(Math.random() * names.length)];
-            const photo = photos[Math.floor(Math.random() * photos.length)];
-            const estado = estados[Math.floor(Math.random() * estados.length)];
-            const social = Math.random() > 0.5 ? "Facebook" : "Instagram";
-            
-            const notificationKey = `${name}-${estado}`;
-            
-            if (usedNotifications.has(notificationKey) && usedNotifications.size < (maleNames.length + femaleNames.length)) {
-                return generateRandomNotification();
-            }
-            
-            usedNotifications.add(notificationKey);
-            
-            const minutesAgo = Math.floor(Math.random() * 10) + 1; // Reduzido para 1-10 minutos
-            
-            return {
-                name,
-                photo,
-                estado,
-                social,
-                time: `${minutesAgo} min atrás`,
-                key: notificationKey
-            };
-        }
-        
-        function generateRandomTestimonial() {
-            const isMale = Math.random() > 0.5;
-            const names = isMale ? maleNames : femaleNames;
-            const photos = isMale ? malePhotos : femalePhotos;
-            
-            const name = names[Math.floor(Math.random() * names.length)];
-            const photo = photos[Math.floor(Math.random() * photos.length)];
-            const estado = estados[Math.floor(Math.random() * estados.length)];
-            const social = Math.random() > 0.5 ? "Facebook" : "Instagram";
-            
-            const testimonials = [
-                "Comprei há uma semana e já baixei 500GB de músicas! Organização impecável no Telegram, muito melhor que Drive!",
-                "Material completo demais! Os packs de funk e eletrônica são sensacionais. Vale cada centavo!",
-                "Nunca vi um acervo tão organizado. A busca por gêneros é muito fácil no Telegram. Recomendo!",
-                "Como iniciante, esse pack me salvou! Tem tudo que preciso e as atualizações são constantes.",
-                "Os efeitos sonoros para podcast são profissionais. Já usei em meus episódios e ficou top!",
-                "Para quem trabalha com som automotivo é perfeito! Baixei várias músicas extendidas.",
-                "Achei que era exagero, mas são 9TB mesmo! Download rápido pelo Telegram. Comprarei de novo!",
-                "Atualizações toda semana! Sempre tem material novo. Já indiquei para vários amigos DJs.",
-                "Organização por pastas é excelente! Fácil de achar o que precisa. Melhor investimento!",
-                "Packs para festas tem tudo mesmo! Usei em um casamento e os noivos amaram o repertório."
-            ];
-            
-            const testimonial = testimonials[Math.floor(Math.random() * testimonials.length)];
-            
-            const testimonialKey = `${name}-${estado}-${testimonial.substring(0, 20)}`;
-            
-            if (usedTestimonials.has(testimonialKey) && usedTestimonials.size < testimonials.length) {
-                return generateRandomTestimonial();
-            }
-            
-            usedTestimonials.add(testimonialKey);
-            
-            return {
-                name,
-                photo,
-                estado,
-                social,
-                testimonial,
-                key: testimonialKey
-            };
-        }
-        
-        function updateNotification() {
-            const notification = generateRandomNotification();
-            const container = document.getElementById('notification-container');
-            
-            container.innerHTML = `
-                <div class="notification-header">
-                    <i class="fas fa-bell"></i> Compra realizada agora há pouco
-                </div>
-                <div class="notification-content">
-                    <img src="${notification.photo}" alt="${notification.name}" class="notification-avatar">
-                    <div class="notification-info">
-                        <h4>${notification.name}</h4>
-                        <p>${notification.estado} • ${notification.social} • ${notification.time}</p>
-                    </div>
-                </div>
-            `;
-            
-            // Mostrar e esconder a notificação
-            container.style.display = 'block';
-            container.style.opacity = '0.85';
-            
-            setTimeout(() => {
-                container.style.opacity = '0';
-                setTimeout(() => {
-                    container.style.display = 'none';
-                    setTimeout(() => {
-                        container.style.opacity = '0.85';
-                        container.style.display = 'block';
-                    }, 10000); // Espera 10 segundos antes de mostrar a próxima
-                }, 1000);
-            }, 7000); // Mostra por 7 segundos (reduzido)
-        }
-        
+        const testimonials = [
+            "Comprei há uma semana e já baixei 500GB de músicas! Organização impecável no Telegram.",
+            "Material completo demais! Os packs de funk e eletrônica são sensacionais. Vale cada centavo!",
+            "Nunca vi um acervo tão organizado. A busca por gêneros é muito fácil no Telegram.",
+            "Como iniciante, esse pack me salvou! Tem tudo que preciso e as atualizações são constantes.",
+            "Os efeitos sonoros para podcast são profissionais. Já usei em meus episódios e ficou top!"
+        ];
+
         function loadTestimonials() {
             const container = document.getElementById('testimonials-container');
             container.innerHTML = '';
             
-            for (let i = 0; i < 5; i++) {
-                const testimonial = generateRandomTestimonial();
+            for (let i = 0; i < 4; i++) {
+                const isMale = Math.random() > 0.5;
+                const names = isMale ? maleNames : femaleNames;
+                const photos = isMale ? malePhotos : femalePhotos;
                 
-                const testimonialElement = document.createElement('div');
+                const name = names[Math.floor(Math.random() * names.length)];
+                const photo = photos[Math.floor(Math.random() * photos.length)];
+                const estado = estados[Math.floor(Math.random() * estados.length)];
+                const testimonial = testimonials[Math.floor(Math.random() * testimonials.length)];
+                
+                const testimonialElement = document.createElement('article');
                 testimonialElement.className = 'testimonial-card';
                 testimonialElement.innerHTML = `
                     <div class="testimonial-header">
-                        <img src="${testimonial.photo}" alt="${testimonial.name}" class="testimonial-avatar">
+                        <img src="${photo}" alt="${name}" class="testimonial-avatar" loading="lazy">
                         <div class="testimonial-info">
-                            <h4>${testimonial.name}</h4>
-                            <p>${testimonial.estado} • ${testimonial.social}</p>
+                            <h4>${name}</h4>
+                            <p>${estado} • Comprou há ${Math.floor(Math.random() * 30) + 1} dias</p>
                         </div>
                     </div>
                     <div class="testimonial-text">
-                        "${testimonial.testimonial}"
+                        "${testimonial}"
                     </div>
                 `;
                 
                 container.appendChild(testimonialElement);
             }
         }
-        
-        // ================== ANIMAÇÃO DOS BOTÕES FLUTUANTES ==================
-        function toggleFloatingButtons() {
-            const floatingButtons = document.getElementById('floating-buttons');
-            
-            // Ocultar botões por 15 segundos
-            floatingButtons.classList.add('hidden');
-            
-            setTimeout(() => {
-                // Mostrar botões por 20 segundos
-                floatingButtons.classList.remove('hidden');
-                
-                // Agendar próxima ocultação
-                setTimeout(() => {
-                    toggleFloatingButtons();
-                }, 20000); // 20 segundos visível
-                
-            }, 15000); // 15 segundos oculto
-        }
 
-        // ================== ANIMAÇÃO DO BOTÃO WHATSAPP ==================
-        function toggleWhatsAppButton() {
-            const whatsappBtn = document.getElementById('whatsapp-float-btn');
+        // ================== NOTIFICAÇÕES REDUZIDAS ==================
+        function showNotification() {
+            // REDUZIDA: Mostra menos frequentemente
+            if (Math.random() > 0.7) return; // 30% chance de não mostrar
             
-            // Ocultar botão por 20 segundos
-            setTimeout(() => {
-                whatsappBtn.classList.remove('show');
-                
-                // Mostrar botão após 10 segundos oculto
-                setTimeout(() => {
-                    whatsappBtn.classList.add('show');
-                    
-                    // Agendar próxima ocultação
-                    setTimeout(() => {
-                        toggleWhatsAppButton();
-                    }, 25000); // 25 segundos visível
-                    
-                }, 10000); // 10 segundos oculto
-                
-            }, 25000); // 25 segundos visível inicial
-        }
-
-        // ================== INICIALIZAR TUDO ==================
-        document.addEventListener('DOMContentLoaded', function() {
-            // Iniciar animação dos botões flutuantes
-            toggleFloatingButtons();
+            const names = [...maleNames, ...femaleNames];
+            const name = names[Math.floor(Math.random() * names.length)];
+            const estado = estados[Math.floor(Math.random() * estados.length)];
+            const minutes = Math.floor(Math.random() * 15) + 5; // Aumentado para 5-20 minutos
             
-            // Mostrar botão WhatsApp após 5 segundos
-            setTimeout(() => {
-                const whatsappBtn = document.getElementById('whatsapp-float-btn');
-                whatsappBtn.classList.add('show');
-                
-                // Iniciar animação do botão WhatsApp
-                toggleWhatsAppButton();
-            }, 5000);
+            const notification = document.getElementById('notification');
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 30px; height: 30px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check" style="color: white; font-size: 0.8rem;"></i>
+                    </div>
+                    <div style="font-size: 0.8rem;">
+                        <strong>${name}</strong> (${estado}) comprou<br>
+                        <small style="color: #AAA;">Há ${minutes} min</small>
+                    </div>
+                </div>
+            `;
             
-            // Primeira notificação após 3 segundos
+            notification.style.display = 'block';
+            
+            // REDUZIDA: Mostra por menos tempo (3 segundos)
             setTimeout(() => {
-                updateNotification();
+                notification.style.display = 'none';
             }, 3000);
             
-            // Atualizar notificação a cada 1 minuto
-            setInterval(updateNotification, 60000);
+            // REDUZIDA: Mostra com menos frequência (a cada 45-60 segundos)
+            setTimeout(showNotification, 45000 + Math.random() * 15000);
+        }
+
+        // ================== FAQ ACCORDION ==================
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                
+                // Fechar todas as respostas
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                
+                // Alternar ícone
+                document.querySelectorAll('.faq-question i').forEach(icon => {
+                    icon.style.transform = 'rotate(0deg)';
+                });
+                
+                // Se não estava ativo, abrir
+                if (!isActive) {
+                    answer.classList.add('active');
+                    question.querySelector('i').style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // ================== TRACKING DE CLICKS ==================
+        document.addEventListener('click', async e => {
+            const btn = e.target.closest('a, button');
+            if(!btn) return;
             
-            // Carregar depoimentos iniciais
+            if(!geoData.city || geoData.city === "Carregando..."){
+                await carregarLocalizacao();
+            }
+            
+            let btnText = btn.innerText || btn.title || "Elemento";
+            if(btnText.length > 50) btnText = btnText.substring(0, 50) + "...";
+            
+            enviarTelegram(
+                "🖱 CLIQUE NA PÁGINA\n" +
+                "🔘 " + btnText + "\n" +
+                "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                "🕒 " + new Date().toLocaleString("pt-BR")
+            );
+        });
+
+        // ================== INICIALIZAÇÃO ==================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carregar depoimentos
             loadTestimonials();
             
-            // Atualizar depoimentos a cada 40 segundos
-            setInterval(loadTestimonials, 40000);
+            // Iniciar notificações REDUZIDAS após 10 segundos
+            setTimeout(showNotification, 10000);
             
-            // Tradução automática para visitantes fora do Brasil
-            setTimeout(() => {
-                if (geoData.region !== "Brasil" && geoData.region !== "Brazil" && geoData.region !== "...") {
-                    const translateNotice = document.createElement('div');
-                    translateNotice.style.cssText = `
-                        position: fixed;
-                        top: 60px; /* Abaixo da notificação */
-                        right: 20px;
-                        background: rgba(0, 0, 0, 0.8);
-                        color: white;
-                        padding: 10px 15px;
-                        border-radius: 8px;
-                        border-left: 4px solid #FF4500;
-                        font-size: 0.9rem;
-                        z-index: 899; /* Abaixo da notificação */
-                        max-width: 250px;
-                        backdrop-filter: blur(5px);
-                    `;
-                    translateNotice.innerHTML = `<i class="fas fa-language"></i> <strong>Translate:</strong> This page can be translated to your language automatically.`;
-                    document.body.appendChild(translateNotice);
+            // Atualizar depoimentos a cada 30 segundos
+            setInterval(loadTestimonials, 30000);
+            
+            // Botão especial para compra
+            const buyBtn = document.querySelector('.cta-container .btn');
+            if(buyBtn) {
+                buyBtn.addEventListener('click', async function(e) {
+                    if(!geoData.city || geoData.city === "Carregando..."){
+                        await carregarLocalizacao();
+                    }
                     
-                    setTimeout(() => {
-                        translateNotice.style.opacity = '0';
-                        translateNotice.style.transition = 'opacity 1s';
-                        setTimeout(() => document.body.removeChild(translateNotice), 1000);
-                    }, 7000);
-                }
-            }, 5000);
-        });
-
-        // Detectar clique no botão de compra e enviar para o Telegram
-        document.querySelector('.purchase-btn').addEventListener('click', async function(e) {
-            if(!geoData.city || geoData.city === "Carregando..."){
-                await carregarLocalizacao();
+                    enviarTelegram(
+                        "🔥 CLIQUE NO BOTÃO DE COMPRA PRINCIPAL\n" +
+                        "💵 Super Pack DJ Premium - R$50,00\n" +
+                        "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                        "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                        "🔗 Redirecionando para checkout..."
+                    );
+                });
             }
             
-            enviarTelegram(
-                "🔥 CLIQUE NO BOTÃO DE COMPRA\n" +
-                "💵 Super Pack DJ Premium - R$50,00\n" +
-                "📍 " + geoData.city + " - " + geoData.region + "\n" +
-                "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
-                "🔗 Redirecionando para checkout..."
-            );
-        });
-
-        // Detectar clique no botão WhatsApp e enviar para o Telegram
-        document.getElementById('whatsapp-float-btn').addEventListener('click', async function(e) {
-            if(!geoData.city || geoData.city === "Carregando..."){
-                await carregarLocalizacao();
+            // Botão WhatsApp
+            const whatsappBtn = document.querySelector('.whatsapp-float');
+            if(whatsappBtn) {
+                whatsappBtn.addEventListener('click', async function(e) {
+                    if(!geoData.city || geoData.city === "Carregando..."){
+                        await carregarLocalizacao();
+                    }
+                    
+                    enviarTelegram(
+                        "💬 CLIQUE NO BOTÃO WHATSAPP\n" +
+                        "📱 Medo de golpes? Comprar pelo WhatsApp\n" +
+                        "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                        "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                        "🔗 Redirecionando para WhatsApp..."
+                    );
+                });
             }
             
-            enviarTelegram(
-                "💬 CLIQUE NO BOTÃO WHATSAPP\n" +
-                "📱 Medo de golpes? Comprar pelo WhatsApp\n" +
-                "📍 " + geoData.city + " - " + geoData.region + "\n" +
-                "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
-                "🔗 Redirecionando para WhatsApp..."
-            );
+            // Botão flutuante comprar agora
+            const cartFloatBtn = document.querySelector('.cart-float');
+            if(cartFloatBtn) {
+                cartFloatBtn.addEventListener('click', async function(e) {
+                    if(!geoData.city || geoData.city === "Carregando..."){
+                        await carregarLocalizacao();
+                    }
+                    
+                    enviarTelegram(
+                        "🛒 CLIQUE NO BOTÃO FLUTUANTE COMPRAR AGORA\n" +
+                        "💵 Botão flutuante - R$50,00\n" +
+                        "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                        "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                        "🔗 Redirecionando para checkout..."
+                    );
+                });
+            }
+            
+            // Botão header comprar agora
+            const headerBuyBtn = document.querySelector('.header-cta .btn-secondary');
+            if(headerBuyBtn) {
+                headerBuyBtn.addEventListener('click', async function(e) {
+                    if(!geoData.city || geoData.city === "Carregando..."){
+                        await carregarLocalizacao();
+                    }
+                    
+                    enviarTelegram(
+                        "🏁 CLIQUE NO BOTÃO HEADER COMPRAR AGORA\n" +
+                        "💵 Header sticky - R$50,00\n" +
+                        "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                        "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                        "🔗 Redirecionando para checkout..."
+                    );
+                });
+            }
+            
+            // Botão hero comprar agora
+            const heroBuyBtn = document.querySelector('.hero .btn');
+            if(heroBuyBtn) {
+                heroBuyBtn.addEventListener('click', async function(e) {
+                    if(!geoData.city || geoData.city === "Carregando..."){
+                        await carregarLocalizacao();
+                    }
+                    
+                    enviarTelegram(
+                        "🎯 CLIQUE NO BOTÃO HERO COMPRAR AGORA\n" +
+                        "💵 Seção hero - R$50,00\n" +
+                        "📍 " + geoData.city + " - " + geoData.region + "\n" +
+                        "🕒 " + new Date().toLocaleString("pt-BR") + "\n" +
+                        "🔗 Redirecionando para checkout..."
+                    );
+                });
+            }
         });
     </script>
 </body>
